@@ -1,0 +1,37 @@
+What does and doesn't cause repaints/reflows when inside
+requestAnimationFrame?
+Asked 8 years,7 months ago Modified 8 years,7 months ago Viewed 2k times
+For example, if I do something like
+5 requestAnimationFrame(function(){
+el.appendChild(otherEl)
+4 el.appendChild(anotherEl)
+anotherEl.removeChild(someotherEl)
+anotherEl.appendChild(yetAnotherEl)
+  })
+ 
+Does that cause a (synchronous?) repaint/reflow to happen during the time when we're trying to
+avoid causing repaint/reflow, thus voiding the purpose of requestAnimationFrame ?
+Or, will the browser be smart and wait until after that frame is complete (after all those DOM
+manipulations are complete) in order to finally paint the resulting DOM structure?
+What are all the things that can cause repaints/reflows, and that we would want to avoid doing
+while inside a requestAnimationFrame?
+The list of styles in this html5rocks article mention only style that (I think) cause repaint/reflow
+when they are modified. I'm also curious to know which JavaScript properties (and on which object
+they are on) cause reflow when being accessed (i.e. reflow happens in order to be able to get the
+value of a certain property)
+javascript html animation graphics requestanimationframe
+Share Improve this question Follow edited Apr 21.2016at 4:30 asked Apr 7,2016 at 3:05
+
+The Overflow Blog
+A student of Geoff Hinton,Yann LeCun,
+and Jeff Dean explains where Al is headed
+Meet the guy responsible for building the
+Call of Duty game engine
+Featured on Meta
+P
+More network sites to see advertising test
+ We're (finally) going to the cloud
+Call for testers for an early access release
+of a Stack Overflow extension...
+truskt
+ 
